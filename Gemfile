@@ -33,6 +33,12 @@ gem "factory_bot_rails"
 gem "faker"
 
 gem "rubocop"
+
+gem 'httparty'
+
+gem 'webmock'
+
+gem 'vcr'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

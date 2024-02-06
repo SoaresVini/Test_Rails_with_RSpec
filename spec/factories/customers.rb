@@ -2,15 +2,16 @@ FactoryBot.define do # rubocop:disable Metrics/BlockLength
   factory :customer, aliases: [:user] do # rubocop:disable Metrics/BlockLength
     transient do
       upcased { false }
-      qtt_orders { 3 }    
+      qtt_orders { 3 }
     end
 
     name { Faker::Name.name }
-    email { Faker::Internet.email(domain: 'gmail.com') }
+    address { Faker::Address.street_address }
 
-    # sequence(:email) { |n| "meu_email-#{n}@email.com" }
+    # { Faker::Internet.email(domain: 'gmail.com') }
     # sequence(:email, 25) { |n| "meu_email-#{n}@email.com" }
     # sequence(:email, 'a') { |n| "meu_email-#{n}@email.com" }
+    sequence(:email) { |n| "meu_email-#{n}@email.com" }
 
     trait :male do
       gender { 'M' }

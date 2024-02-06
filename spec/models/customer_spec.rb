@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe Customer, type: :model do # rubocop:disable Metrics/BlockLength
   it '#full_name - sobrescrevendo o atributo' do
     customer = FactoryBot.create(:customer, name: 'cafezinho')
-    
     expect(customer.full_name).to eq('Sr. cafezinho')
-    puts customer.email
   end
 
   it '#DEF - Herança' do
@@ -71,5 +69,19 @@ RSpec.describe Customer, type: :model do # rubocop:disable Metrics/BlockLength
     customer = create(:customer_female_def)
     expect(customer.gender).to eq('F')
     expect(customer.vip).to be_falsey
+  end
+
+  it 'travel_to' do
+
+    travel_to Time.zone.local(2004, 11, 24, 01, 04, 44) do
+      @customer = FactoryBot.create(:customer_vip)
+    end
+
+    puts Time.now
+    puts @customer.created_at
+    puts Time.new(2004, 11, 24, 01, 04, 44)
+    puts Time.zone.local(2004, 11, 24, 01, 04, 44)
+
+    expect(@customer.created_at).to eq(Time.zone.local(2004, 11, 24, 01, 04, 44))
   end
 end
