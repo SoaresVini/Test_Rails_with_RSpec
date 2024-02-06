@@ -28,7 +28,11 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'rspec-rails'
+gem "factory_bot_rails"
 
+gem "faker"
+
+gem "rubocop"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

@@ -1,5 +1,75 @@
 require 'rails_helper'
 
-RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Customer, type: :model do # rubocop:disable Metrics/BlockLength
+  it '#full_name - sobrescrevendo o atributo' do
+    customer = FactoryBot.create(:customer, name: 'cafezinho')
+    
+    expect(customer.full_name).to eq('Sr. cafezinho')
+    puts customer.email
+  end
+
+  it '#DEF - Herança' do
+    customer = FactoryBot.create(:customer_def)
+    expect(customer.vip).to be_falsey
+  end
+
+  it '#VIP - Herança' do
+    customer = FactoryBot.create(:customer_vip)
+    expect(customer.vip).to be_truthy
+  end
+
+  it '#full_name' do
+    customer = FactoryBot.create(:user)
+    expect(customer.full_name).to start_with('Sr. ')
+  end
+
+  it 'Usando o attributes_for' do 
+    attrs = attributes_for(:customer_def)
+    customer = Customer.create(attrs)
+    expect(customer.full_name).to start_with('Sr. ')
+  end
+
+  it 'atributo transitorio' do
+    customer = FactoryBot.create(:customer_def, upcased: true)
+    expect(customer.name.upcase).to eq(customer.name)
+  end
+
+  it 'atributo transitorio' do
+    customer = FactoryBot.create(:customer_def, upcased: true)
+    expect(customer.name.upcase).to eq(customer.name)
+  end
+
+  it 'Cliente Mascolino' do
+    customer = create(:customer_male)
+    expect(customer.gender).to eq('M')
+  end
+
+  it 'Cliente Feminino' do
+    customer = create(:customer_female)
+    expect(customer.gender).to eq('F')
+  end
+
+  it 'Cliente Mascolino vip' do
+    customer = create(:customer_male_vip)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to be_truthy
+  end
+
+  it 'Cliente Mascolino def' do
+    customer = create(:customer_male_def)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to be_falsey
+  end
+
+  it 'Cliente Feminino vip' do
+    customer = create(:customer_female_vip)
+    expect(customer.gender).to eq('F')
+    expect(customer.vip).to be_truthy
+  end
+
+  it 'Cliente Feminino def' do
+    customer = create(:customer_female_def)
+    expect(customer.gender).to eq('F')
+    expect(customer.vip).to be_falsey
+  end
 end
