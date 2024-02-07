@@ -39,6 +39,13 @@ gem 'httparty'
 gem 'webmock'
 
 gem 'vcr'
+
+gem "shoulda-matchers"
+
+gem 'devise'
+
+gem 'rails-controller-testing'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

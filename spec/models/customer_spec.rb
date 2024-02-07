@@ -72,16 +72,9 @@ RSpec.describe Customer, type: :model do # rubocop:disable Metrics/BlockLength
   end
 
   it 'travel_to' do
-
     travel_to Time.zone.local(2004, 11, 24, 01, 04, 44) do
       @customer = FactoryBot.create(:customer_vip)
     end
-
-    puts Time.now
-    puts @customer.created_at
-    puts Time.new(2004, 11, 24, 01, 04, 44)
-    puts Time.zone.local(2004, 11, 24, 01, 04, 44)
-
     expect(@customer.created_at).to eq(Time.zone.local(2004, 11, 24, 01, 04, 44))
   end
 end
