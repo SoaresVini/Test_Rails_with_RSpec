@@ -46,6 +46,9 @@ gem 'devise'
 
 gem 'rails-controller-testing'
 
+gem 'rspec-json_expectations'
+
+gem 'json_matchers'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

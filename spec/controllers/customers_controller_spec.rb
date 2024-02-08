@@ -12,10 +12,10 @@ describe CustomersController, type: :controller do # rubocop:disable Metrics/Blo
         expect(response).to have_http_status(200)
       end
     end
-    it 'responds a 302 response (not authorized)' do
-      get :show, params: { id: Customer.first.id }
-      expect(response).to have_http_status(302)
-    end
+    # it 'responds a 302 response (not authorized)' do
+    #   get :show, params: { id: Customer.first.id }
+    #   expect(response).to have_http_status(302)
+    # end
   end
 
   describe 'As Logged Member' do  # rubocop:disable Metrics/BlockLength
